@@ -1,12 +1,11 @@
 using CommanderGQL.Data;
 using CommanderGQL.Models;
-using HotChocolate; 
 namespace CommanderGQL.GraphQL
 {
     public class Query
     {
-      //  [HotChocolate.Data.userDb(typeof(AppDbContext))]
-        public IQueryable<Platform> GetPlatform([Service] AppDbContext context)
+       [HotChocolate.Data.UseDbContext(typeof(AppDbContext))]
+        public IQueryable<Platform> GetPlatform([HotChocolate.ScopedService] AppDbContext context)
         {
             return context.Platforms;
         }
@@ -30,15 +29,15 @@ namespace CommanderGQL.GraphQL
 		new("Software Architecture with C# 10 and .NET 6", new Author("Francesco Abbruzzese", DateOnly.MinValue)),
 	];
 
-	[GraphQLDescription("Returns all Books")]
-	public IEnumerable<Book> GetBooks() => _books;
+	// //[GraphQLDescription("Returns all Books")]
+	// public IEnumerable<Book> GetBooks() => _books;
 
-	[GraphQLDescription("Returns the specified Book")]
-	public Book GetBook([GraphQLDescription("Book Title")] string title) =>
-		_books.First(x => x.Title == title);
+	// //[GraphQLDescription("Returns the specified Book")]
+	// public Book GetBook(string title) =>
+	// 	_books.First(x => x.Title == title);
 
-	[GraphQLDescription("Returns the specified Author")]
-	public Author GetAuthor([GraphQLDescription("Author Name")] string name) =>
-		_books.First(x => x.Author.Name == name).Author;
+	// //[GraphQLDescription("Returns the specified Author")]
+	// public Author GetAuthor(string name) =>
+	// 	_books.First(x => x.Author.Name == name).Author;
     }
 }

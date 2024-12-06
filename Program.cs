@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer
+builder.Services.AddPooledDbContextFactory<AppDbContext>(opt => opt.UseSqlServer
            (builder.Configuration.GetConnectionString("CommandConStr")));
 builder.Services.AddGraphQLServer()
                 .AddQueryType<Query>();
@@ -18,13 +18,16 @@ var app = builder.Build();
 app.MapGraphQL();
 
 app.UseGraphQLVoyager(new GraphQL.Server.Ui.Voyager.GraphQLVoyagerOptions()
-            {
-                GraphQLEndPoint = "/graphql",
-                Path = "/graphql-voyager"
-            });
+{
+    GraphQLEndPoint = "/graphql",
+    Path = "/graphql-voyager"
+});
 
-app.MapGet("/", ([FromServices]AppDbContext context) => {
-    return context.Platforms;
+app.MapGet("/", ([FromServices] IDbContextFactory<AppDbContext> factory) =>
+{
+    using var context = factory.CreateDbContext();
+    return context.Platforms.ToList();
+
 });
 
 app.Run();
