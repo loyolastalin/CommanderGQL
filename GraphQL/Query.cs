@@ -1,5 +1,6 @@
 using CommanderGQL.Data;
 using CommanderGQL.Models;
+using HotChocolate;
 namespace CommanderGQL.GraphQL
 {
     public class Query
@@ -17,15 +18,15 @@ namespace CommanderGQL.GraphQL
 		new("Full Stack Serverless", new Author("Nader Dabit", DateTime.Now)),		
 	];
 
-	// //[GraphQLDescription("Returns all Books")]
+	[GraphQLDescription("Returns all Books")]
 	 public IEnumerable<Book> GetBooks() => _books;
 
-	// //[GraphQLDescription("Returns the specified Book")]
-	public Book GetBook(string title) =>
+	[GraphQLDescription("Returns the specified Book")]
+	public Book GetBook([GraphQLDescription("Title of the Book")]string title) =>
 		_books.First(x => x.Title == title);
 
-	// //[GraphQLDescription("Returns the specified Author")]
-	public Author GetAuthor(string name) =>
+	[GraphQLDescription("Returns the specified Author")]
+	public Author GetAuthor([GraphQLDescription("Name of the Author")]string name) =>
 		_books.First(x => x.Author.Name == name).Author;
     }
 }
