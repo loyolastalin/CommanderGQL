@@ -11,4 +11,7 @@ namespace CommanderGQL.Models
 
          public string LicenseKey { get; set; }
     }
+
+      public record AddPlatformInput(string Name, string LicenseKey);  
+       public record AddPlatformPayload(Platform platform);
 }

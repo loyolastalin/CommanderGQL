@@ -8,6 +8,7 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(opt => opt.UseSqlServer
            (builder.Configuration.GetConnectionString("CommandConStr")));
 builder.Services.AddGraphQLServer()
                 .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
                 .AddFiltering()
                 .AddSorting();
 
