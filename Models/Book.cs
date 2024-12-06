@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 namespace CommanderGQL.Models
 {
     public record Book(string Title, Author Author);
-    public record Author(string Name, DateOnly Birthday);
+    public record Author(string Name, DateTime Birthday);
 }

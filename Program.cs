@@ -28,6 +28,6 @@ app.MapGet("/", ([FromServices] IDbContextFactory<AppDbContext> factory) =>
     using var context = factory.CreateDbContext();
     return context.Platforms.ToList();
 
-});
+}); 
 
 app.Run();
