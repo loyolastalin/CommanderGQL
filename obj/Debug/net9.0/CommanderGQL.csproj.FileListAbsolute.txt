@@ -175,3 +175,16 @@ D:\.netproj\CommanderGQL\obj\Debug\net9.0\CommanderGQL.sourcelink.json
 D:\.netproj\CommanderGQL\bin\Debug\net9.0\HotChocolate.Utilities.Introspection.dll
 D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Extensions.DiagnosticAdapter.dll
 D:\.netproj\CommanderGQL\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Azure.Security.KeyVault.Certificates.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Azure.Security.KeyVault.Secrets.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Abstractions.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.Certificate.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.Certificateless.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.Diagnostics.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.TokenAcquisition.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.Identity.Web.TokenCache.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.IdentityModel.LoggingExtensions.dll
+D:\.netproj\CommanderGQL\bin\Debug\net9.0\Microsoft.IdentityModel.Validators.dll

@@ -2,8 +2,11 @@ using CommanderGQL.Data;
 using CommanderGQL.GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
 builder.Services.AddPooledDbContextFactory<AppDbContext>(opt => opt.UseSqlServer
            (builder.Configuration.GetConnectionString("CommandConStr")));
 builder.Services.AddGraphQLServer()
@@ -17,6 +20,18 @@ builder.Services.AddGraphQLServer()
 var app = builder.Build();
 
 //app.UseRouting().UseEndpoints(endpoints=> endpoints.MapGraphQL());
+app.UseAuthentication();
+
+app.Use(async (context, next) =>
+{
+    if (!context.User.Identity?.IsAuthenticated ?? false)
+    {
+        context.Response.StatusCode = 401;
+        await context.Response.WriteAsync("Not Authenticated");
+    }
+    else await next();
+
+});
 
 app.MapGraphQL();
 

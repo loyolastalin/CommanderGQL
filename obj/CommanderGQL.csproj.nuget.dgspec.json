@@ -75,6 +75,10 @@
             "Microsoft.EntityFrameworkCore.SQlserver": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[3.5.0, )"
             }
           },
           "imports": [
